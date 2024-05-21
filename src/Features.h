@@ -8,6 +8,7 @@ class Features {
 public:
 	Features();
 
+	void Tick();
 	void Repair();
 	void Refuel();
 	void SetMoney(int64_t money);

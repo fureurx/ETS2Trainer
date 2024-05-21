@@ -43,6 +43,11 @@ Features::Features()
 	displayDamageFuncAddress = Memory::SigScan(moduleBase, "? ? ? ? ? f3 0f 10 15 ? ? ? ? 48 8d 54 24 ? 48 8b 4b");
 }
 
+void Features::Tick()
+{
+
+}
+
 void Features::Repair()
 {
 	currentTruck->ChassiDmg = 0;

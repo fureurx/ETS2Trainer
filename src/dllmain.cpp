@@ -15,6 +15,8 @@ DWORD WINAPI MainThread(HMODULE module)
     LogInfo("Setup Complete :)");
     while (!g_unload) 
     {
+        features_instance->Tick();
+
         if (GetAsyncKeyState(VK_END) & 0x8000)
             g_unload = true;
 
