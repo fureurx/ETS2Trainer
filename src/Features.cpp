@@ -43,9 +43,44 @@ Features::Features()
 	displayDamageFuncAddress = Memory::SigScan(moduleBase, "? ? ? ? ? f3 0f 10 15 ? ? ? ? 48 8d 54 24 ? 48 8b 4b");
 }
 
+ULONGLONG startTime = GetTickCount64();
+bool keyDown = false;
 void Features::Tick()
 {
-
+	if (g_Options.headLight)
+	{
+		switch (g_Menu->selectedItemIndex)
+		{
+		case 0:
+			if (keyDown && GetTickCount64() - startTime > 100)
+			{
+				KeyUp(0x24);
+				KeyUp(0x1B);
+				KeyDown(0x1A);
+				startTime = GetTickCount64();
+				keyDown = false;
+			}
+			else if (!keyDown && GetTickCount64() - startTime > 100)
+			{
+				KeyDown(0x24);
+				KeyUp(0x1A);
+				KeyDown(0x1B);
+				startTime = GetTickCount64();
+				keyDown = true;
+			}
+			break;
+		case 1:
+			if (GetTickCount64() - startTime > 100)
+			{
+				KeyDown(0x26);
+				KeyUp(0x26);
+				startTime = GetTickCount64();
+			}
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Features::Repair()

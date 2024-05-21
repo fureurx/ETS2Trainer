@@ -139,6 +139,8 @@ LRESULT CALLBACK Hooks::hWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             g_ShowMenu = !g_ShowMenu;
         else if (wParam == VK_F9 && g_Options.teleportHotkey)
             g_Features->TeleportToCameraCoords();
+        else if (wParam == VK_F8)
+            g_Options.headLight = !g_Options.headLight;
     }
 
     if (g_ShowMenu)

@@ -37,6 +37,7 @@ public:
 	OPTION(int, moneyValue, 100000);
 	OPTION(int, XPValue, 100000);
 	OPTION(bool, teleportHotkey, false);
+	OPTION(bool, headLight, false);
 };
 
 
@@ -47,9 +48,12 @@ public:
 	void OnRender();
 
 	bool visible = true;
+	int selectedItemIndex = 0;
 private:
 
 	void HandleInput();
+
+	const char* items[2] = { "Headlights + Turn Lights", "Headlights only" };
 };
 
 inline Options g_Options;

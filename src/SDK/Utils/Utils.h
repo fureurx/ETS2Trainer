@@ -18,3 +18,6 @@ void AttachConsole();
 void CloseConsole();
 
 void PrintHexDump(const void* data, size_t size);
+
+void KeyDown(int key);
+void KeyUp(int key);

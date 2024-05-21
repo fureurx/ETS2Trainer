@@ -49,6 +49,21 @@ void Menu::OnRender()
 
 			ImGui::Checkbox("F9 Teleport", g_Options.teleportHotkey);
 		}
+
+		{
+			ImGui::Checkbox("Flash Lights", g_Options.headLight);
+
+			if (ImGui::BeginCombo("Lights", items[selectedItemIndex])) {
+				for (int n = 0; n < sizeof(items) / sizeof(items[0]); n++) {
+					bool isSelected = (selectedItemIndex == n);
+					if (ImGui::Selectable(items[n], isSelected))
+						selectedItemIndex = n;
+					if (isSelected)
+						ImGui::SetItemDefaultFocus();
+				}
+				ImGui::EndCombo();
+			}
+		}
 	}
 	ImGui::End();
 }

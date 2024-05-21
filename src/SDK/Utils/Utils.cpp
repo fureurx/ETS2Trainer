@@ -54,3 +54,26 @@ void PrintHexDump(const void* data, size_t size) {
     // Print the entire formatted output at once
     std::cout << output.str() << std::flush;
 }
+
+void KeyDown(int key)
+{
+    INPUT input[1];
+    ::ZeroMemory(input, sizeof(input));
+
+    input[0].type = INPUT_KEYBOARD;
+
+    input[0].ki.wScan = key;
+    input[0].ki.dwFlags = KEYEVENTF_SCANCODE;
+    do {} while (SendInput(1, input, sizeof(INPUT)) < 1);
+}
+
+void KeyUp(int key)
+{
+    INPUT input[1];
+    ::ZeroMemory(input, sizeof(input));
+
+    input[0].type = INPUT_KEYBOARD;
+    input[0].ki.wScan = key;
+    input[0].ki.dwFlags = KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP;
+    do {} while (SendInput(1, input, sizeof(INPUT)) < 1);
+}
