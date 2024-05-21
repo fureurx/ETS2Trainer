@@ -16,3 +16,5 @@ void LogInfo(T msg)
 void AttachConsole();
 
 void CloseConsole();
+
+void PrintHexDump(const void* data, size_t size);
