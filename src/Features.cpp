@@ -25,7 +25,7 @@ Features::Features()
 
 	currentTruck = *(Truck**)Memory::FindDMAAddy(profileBase, { 0x18, 0x80 });
 	moneyAddress = (int64_t*)Memory::FindDMAAddy(profileBase, { 0x10, 0x10 });
-	xpAddress = (int64_t*)Memory::FindDMAAddy(profileBase, { 0x195C });
+	xpAddress = (int64_t*)Memory::FindDMAAddy(profileBase, { 0x196C });
 
 	cameraCoords = (Vector3*)Memory::FindDMAAddy(relativeToAbsolute<uintptr_t>(
 		(uintptr_t)Memory::SigScan(moduleBase, "48 8b 05 ? ? ? ? 33 ff 4d 8b f8"), 3, 7), 
