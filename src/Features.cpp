@@ -39,7 +39,7 @@ Features::Features()
 		{ (unsigned int)teleportOffset }));
 
 	teleportFuncAddress = Memory::SigScan(moduleBase, "48 81 ec ? ? ? ? 48 83 79 ? ? 41 0f b6 d9") - 20;
-	damageFuncAddress = Memory::SigScan(moduleBase, "0f 28 cf ? ? ? ? ? 41 c7 84 24") + 3;
+	damageFuncAddress = Memory::SigScan(moduleBase, "0f 28 ce e8 ? ? ? ? 41 c7 87 ?") + 3;
 	displayDamageFuncAddress = Memory::SigScan(moduleBase, "? ? ? ? ? f3 0f 10 15 ? ? ? ? 48 8d 54 24 ? 48 8b 4b");
 }
 
@@ -85,8 +85,8 @@ void Features::DisableDamage(bool enable)
 	}
 	else 
 	{
-		Memory::Patch(damageFuncAddress, (BYTE*)"\xE8\xC7\x26\xDA\xFF", 5);
-		Memory::Patch(displayDamageFuncAddress, (BYTE*)"\xE8\xB0\x23\xB9\xFF", 5);
+		Memory::Patch(damageFuncAddress, (BYTE*)"\xE8\x93\xE3\xD5\xFF", 5);
+		Memory::Patch(displayDamageFuncAddress, (BYTE*)"\xE8\xCF\xCF\xB2\xFF", 5);
 	}
 }
 
