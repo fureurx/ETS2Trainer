@@ -38,7 +38,7 @@ Features::Features()
 		(uintptr_t)Memory::SigScan(moduleBase, "48 8b 05 ? ? ? ? f3 44 0f 10 25"), 3, 7), 
 		{ (unsigned int)teleportOffset }));
 
-	teleportFuncAddress = Memory::SigScan(moduleBase, "48 81 ec ? ? ? ? 48 83 79 ? ? 41 0f b6 d9") - 20;
+	teleportFuncAddress = Memory::SigScan(moduleBase, "48 81 ec ? ? ? ? 48 83 79 ? ? 45 0f b6 f9") - 17;
 	damageFuncAddress = Memory::SigScan(moduleBase, "0f 28 ce e8 ? ? ? ? 41 c7 87 ?") + 3;
 	displayDamageFuncAddress = Memory::SigScan(moduleBase, "? ? ? ? ? f3 0f 10 15 ? ? ? ? 48 8d 54 24 ? 48 8b 4b");
 }
