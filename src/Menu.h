@@ -38,6 +38,7 @@ public:
 	OPTION(int, XPValue, 100000);
 	OPTION(bool, teleportHotkey, false);
 	OPTION(bool, headLight, false);
+	OPTION(int, headLightFreq, 100);
 };
 
 

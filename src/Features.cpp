@@ -52,7 +52,7 @@ void Features::Tick()
 		switch (g_Menu->selectedItemIndex)
 		{
 		case 0:
-			if (keyDown && GetTickCount64() - startTime > 100)
+			if (keyDown && GetTickCount64() - startTime > g_Options.headLightFreq)
 			{
 				KeyUp(0x24);
 				KeyUp(0x1B);
@@ -60,7 +60,7 @@ void Features::Tick()
 				startTime = GetTickCount64();
 				keyDown = false;
 			}
-			else if (!keyDown && GetTickCount64() - startTime > 100)
+			else if (!keyDown && GetTickCount64() - startTime > g_Options.headLightFreq)
 			{
 				KeyDown(0x24);
 				KeyUp(0x1A);
@@ -70,7 +70,7 @@ void Features::Tick()
 			}
 			break;
 		case 1:
-			if (GetTickCount64() - startTime > 100)
+			if (GetTickCount64() - startTime > g_Options.headLightFreq)
 			{
 				KeyDown(0x26);
 				KeyUp(0x26);

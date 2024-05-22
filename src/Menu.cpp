@@ -63,6 +63,8 @@ void Menu::OnRender()
 				}
 				ImGui::EndCombo();
 			}
+
+			ImGui::SliderInt("Frequency (ms)", g_Options.headLightFreq, 50, 1000);
 		}
 	}
 	ImGui::End();
