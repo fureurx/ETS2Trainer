@@ -13,8 +13,7 @@ void Menu::OnRender()
 {
 	ImGui::SetNextWindowSize(ImVec2{ 270,330 }, ImGuiCond_Once);
 	if (ImGui::Begin("ETS2 Trainer", &g_ShowMenu,
-		ImGuiWindowFlags_NoCollapse |
-		ImGuiWindowFlags_NoResize))
+		ImGuiWindowFlags_NoCollapse))
 	{
 		if (ImGui::Checkbox("Disable Damage", g_Options.disableDamage)) {
 			g_Features->DisableDamage(g_Options.disableDamage);
