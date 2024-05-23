@@ -77,3 +77,38 @@ void KeyUp(int key)
     input[0].ki.dwFlags = KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP;
     do {} while (SendInput(1, input, sizeof(INPUT)) < 1);
 }
+
+void GenerateJmpBinary(BYTE* buffer, uintptr_t currentAddress, uintptr_t targetAddress) {
+    const BYTE jmpOpcode = 0xE9;
+
+    // Calculate the offset
+    int32_t offset = static_cast<int32_t>(targetAddress - (currentAddress + 5));
+
+    // Encode the jmp instruction into the buffer
+    buffer[0] = jmpOpcode;
+    *reinterpret_cast<int32_t*>(&buffer[1]) = offset;
+}
+
+void* AllocateNearAddress(void* allocateNearThisAddress, SIZE_T size, SIZE_T range) {
+    uintptr_t baseAddress = reinterpret_cast<uintptr_t>(allocateNearThisAddress);
+    uintptr_t startAddress = baseAddress - range / 2;
+    uintptr_t endAddress = baseAddress + range / 2;
+
+    // Align addresses to page boundaries
+    SYSTEM_INFO sysInfo;
+    GetSystemInfo(&sysInfo);
+    uintptr_t pageSize = sysInfo.dwPageSize;
+
+    startAddress &= ~(pageSize - 1);
+    endAddress &= ~(pageSize - 1);
+
+    for (uintptr_t address = startAddress; address < endAddress; address += pageSize) {
+        void* allocatedMemory = VirtualAlloc(reinterpret_cast<void*>(address), size, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+        if (allocatedMemory != nullptr) {
+            return allocatedMemory;
+        }
+    }
+
+    // If no suitable address was found
+    return nullptr;
+}

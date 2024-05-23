@@ -65,6 +65,17 @@ void Menu::OnRender()
 
 			ImGui::SliderInt("Frequency (ms)", g_Options.headLightFreq, 50, 1000);
 		}
+
+		{
+			if (ImGui::Checkbox("Velocity", g_Options.velocityMult)) {
+				g_Features->VelocityMult(g_Options.velocityMult);
+			}
+
+			if (ImGui::SliderFloat("Velocity Multiplier", g_Options.velicityMultiplier, 1.f, 1.025f))
+			{
+				g_Features->UpdateVelocityMultiplier(g_Options.velicityMultiplier);
+			}
+		}
 	}
 	ImGui::End();
 }

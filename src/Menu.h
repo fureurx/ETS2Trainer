@@ -39,6 +39,8 @@ public:
 	OPTION(bool, teleportHotkey, false);
 	OPTION(bool, headLight, false);
 	OPTION(int, headLightFreq, 100);
+	OPTION(bool, velocityMult, false);
+	OPTION(float, velicityMultiplier, 1.005f);
 };
 
 

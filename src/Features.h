@@ -9,6 +9,7 @@ public:
 	Features();
 
 	void Tick();
+	void Release();
 	void Repair();
 	void Refuel();
 	void SetMoney(int64_t money);
@@ -18,6 +19,8 @@ public:
 	void DisableDamage(bool enable);
 	void TeleportToCameraCoords();
 	void TeleportToCoords(Vector3& coords);
+	void VelocityMult(bool enable);
+	void UpdateVelocityMultiplier(float value);
 
 private:
 	Truck* currentTruck = nullptr;

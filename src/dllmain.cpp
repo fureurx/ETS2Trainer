@@ -24,6 +24,7 @@ DWORD WINAPI MainThread(HMODULE module)
     }
 
     g_hooking->disable();
+    features_instance->Release();
     LogInfo("Freeing library and exiting...");
     CloseConsole();
     FreeLibraryAndExitThread(module, 0);
