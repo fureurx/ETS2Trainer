@@ -187,12 +187,6 @@ void Features::VelocityMult(bool enable)
 {
 	if (enable)
 	{
-		//std::cout << "Generated displacement: ";
-		//for (int i = 0; i < 12; ++i) {
-		//	std::cout << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(test[i] & 0xFF) << " ";
-		//}
-		//std::cout << std::endl;
-
 		// Attempt to allocate memory near the specified address
 		uintptr_t allocateNearThisAddress = reinterpret_cast<uintptr_t>(moduleBase) + 0x578EFD;
 		allocatedMemory = AllocateNearAddress(reinterpret_cast<void*>(allocateNearThisAddress), 20);
