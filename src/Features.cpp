@@ -92,7 +92,8 @@ void Features::Tick()
 			break;
 		}
 	}
-	else if (g_Options.velocityMult)
+	
+	if (g_Options.velocityMult)
 	{
 		XINPUT_STATE state;
 		ZeroMemory(&state, sizeof(XINPUT_STATE));
